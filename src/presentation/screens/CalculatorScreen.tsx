@@ -9,7 +9,7 @@ export const CalculatorScreen = () => {
 
  const {
 
-  number, prevNumber, buildNumber, toggleSign,
+  formula, number, prevNumber, buildNumber, toggleSign,
   clean, deleteOperation,
   divideOperation, multiplyOperation, subtractOperation, addOperation,
   calculateResult,
@@ -23,13 +23,19 @@ export const CalculatorScreen = () => {
     <Text
      adjustsFontSizeToFit
      numberOfLines={ 1 }
-     style={ styles.mainResult }>{ number }</Text>
-    <Text
-     adjustsFontSizeToFit
-     numberOfLines={ 1 }
-     style={ styles.subResult }>
-      { (prevNumber === '0') ? ' ' : prevNumber }
-      </Text>
+     style={ styles.mainResult }>{ formula }</Text>
+    {
+     ( formula === prevNumber )
+      ? <Text style={ styles.subResult }></Text>
+      : (
+       <Text
+        adjustsFontSizeToFit
+        numberOfLines={ 1 }
+        style={ styles.subResult }>
+        { prevNumber }
+       </Text>
+      )
+    }
    </View>
 
    <View style={ styles.row }>
